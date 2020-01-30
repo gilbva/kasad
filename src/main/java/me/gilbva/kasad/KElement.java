@@ -2,9 +2,10 @@ package me.gilbva.kasad;
 
 import me.gilbva.kasad.storage.complex.ElementsStorage;
 
+import java.util.Map;
 import java.util.Set;
 
-public class KElement {
+public class KElement<T extends KElement<T>> {
     private int key;
 
     private ElementsStorage storage;
@@ -24,5 +25,18 @@ public class KElement {
 
     public boolean hasLabel(String label) {
         return storage.hasLabel(key, label);
+    }
+
+    public Map<String, Object> getProps() {
+        return storage.getProperties(key);
+    }
+
+    public Object get(String prop) {
+        return storage.getProperty(key, prop);
+    }
+
+    public T set(String prop, Object value) {
+        storage.setProperty(key, prop, value);
+        return (T)this;
     }
 }

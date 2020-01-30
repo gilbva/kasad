@@ -9,15 +9,22 @@ public class Main {
 
     public static void main(String[] args) {
         var kasad = new Kasad();
-        kasad.addNode("good", "simple");
-        kasad.addNode("good");
-        kasad.addNode("bad");
-        kasad.addNode("bad", "complex");
+        kasad.addNode("good", "simple")
+                .set("name", "node1")
+                .set("age", 32);
+        kasad.addNode("good")
+                .set("name", "node2");
+        kasad.addNode("bad")
+                .set("name", "node3");
+        kasad.addNode("bad", "complex")
+                .set("name", "node4");
 
         kasad.getNodes().forEach(n -> {
             System.out.print(n.getKey());
             System.out.print(" - ");
-            System.out.println(n.getLabels());
+            System.out.print(n.getLabels());
+            System.out.print(" - ");
+            System.out.println(n.getProps());
         });
     }
 }

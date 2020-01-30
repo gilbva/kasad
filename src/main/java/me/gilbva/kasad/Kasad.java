@@ -1,7 +1,7 @@
 package me.gilbva.kasad;
 
 import me.gilbva.kasad.storage.complex.ElementsStorage;
-import me.gilbva.kasad.storage.simple.LabelsStorage;
+import me.gilbva.kasad.storage.simple.NamesStorage;
 import org.mapdb.DB;
 import org.mapdb.DBMaker;
 import java.io.File;
@@ -12,7 +12,9 @@ public class Kasad {
 
     private final DB db;
 
-    private LabelsStorage labels;
+    private NamesStorage labels;
+
+    private NamesStorage props;
 
     private ElementsStorage nodes;
 
@@ -33,9 +35,10 @@ public class Kasad {
     }
 
     void init() {
-        labels = new LabelsStorage("labels", db);
-        nodes = new ElementsStorage("nodes", db, labels);
-        edges = new ElementsStorage("edges", db, labels);
+        labels = new NamesStorage("labels", db);
+        props = new NamesStorage("props", db);
+        nodes = new ElementsStorage("nodes", db, labels, props);
+        edges = new ElementsStorage("edges", db, labels, props);
     }
 
     public KNode addNode(String... labels) {
