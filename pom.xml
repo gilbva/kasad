@@ -4,7 +4,7 @@
 
     <groupId>me.gilbva</groupId>
     <artifactId>kasad</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
 
     <name>Kasad</name>
     <description>An embedded simple graph database.</description>
